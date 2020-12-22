@@ -348,38 +348,6 @@
   </div>
 
 
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    <span id="busuanzi_container_site_pv">�ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">�ܷÿ���<span id="busuanzi_value_site_uv"></span>��</span>
-    <span class="post-meta-divider">|</span>
-<!-- �����Ӽ�����ʼֵ���� -->
-<script>
-$(document).ready(function() {
-
-    var int = setInterval(fixCount, 50);  // 50ms���ڼ�⺯��
-    var countOffset = 20000;  // ��ʼ���״�����
-
-    function fixCount() {            
-       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
-        {
-            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
-            clearInterval(int);
-        }                  
-        if ($("#busuanzi_container_site_pv").css("display") != "none")
-        {
-            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // ���ϳ�ʼ���� 
-            clearInterval(int); // ֹͣ���
-        }  
-    }
-       	
-});
-</script> 
-
-
-
-
 
         
 <div class="busuanzi-count">
@@ -457,6 +425,35 @@ $(document).ready(function() {
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '9lenQg8Y4X7q3a8d17UVLWlA-gzGzoHsz',
+      appKey     : '84jiafuuj5s3uoSz5EM5fXE1',
+      placeholder: "输入评论~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
